@@ -1,5 +1,4 @@
 !bestgirl
 !img [search term]
 !weather [zip code?]
-!frozen => incorrect frozen quotes?
 

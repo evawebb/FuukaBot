@@ -10,8 +10,16 @@ class DnDBot
     @rand = Random.new
   end
 
-  def cmd_bold(event, args)
-    event.respond("**#{args.join(" ")}**")
+  def cmd_help(event, args)
+    commands = []
+    self.methods.each do |method_name|
+      if method_name.to_s =~ /^cmd_(.*)$/
+        commands << "!#{$~[1]}"
+      end
+    end
+    
+    event.respond("I know these commands:")
+    event.respond("```\n#{commands.join("\n")}\n```")
   end
 
   def cmd_google(event, args)
