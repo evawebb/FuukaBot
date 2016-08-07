@@ -1,4 +1,8 @@
 !bestgirl
 !img [search term]
 !weather [zip code?]
+!21
+!math
+!coin
+!8ball
 

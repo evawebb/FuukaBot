@@ -1,6 +1,10 @@
 require "uri"
 require "open-uri"
 
+EXTS = ["gif", "png", "jpg", "jpeg"]
+FILM_LISTS = ["A–C", "D–F", "G–I", "J–L", "M–O", "P–S", "T–V", "W–Z"]
+FROZEN_CHARACTERS = [["Elsa", 0.2], ["Anna", 0.4], ["Kristoff", 0.6], ["Olaf", 0.7], ["Hans", 0.8], ["Sven", 0.85], ["Oaken", 0.9], ["Grandpabbie", 0.95], ["Duke of Weselton", 0.98], ["Marshmallow", 0.9999], ["Rapunzel", 1.0]]
+
 class FrozenCommand
   def initialize
     @rand = Random.new

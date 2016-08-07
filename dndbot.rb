@@ -1,20 +1,24 @@
+require_relative "commands/exit.rb"
 require_relative "commands/frozen.rb"
 require_relative "commands/gif.rb"
 require_relative "commands/google.rb"
+require_relative "commands/ping.rb"
+require_relative "commands/playing.rb"
 require_relative "commands/roll.rb"
 require_relative "commands/youtube.rb"
 
-EXTS = ["gif", "png", "jpg", "jpeg"]
-FILM_LISTS = ["A–C", "D–F", "G–I", "J–L", "M–O", "P–S", "T–V", "W–Z"]
-FROZEN_CHARACTERS = [["Elsa", 0.2], ["Anna", 0.4], ["Kristoff", 0.6], ["Olaf", 0.7], ["Hans", 0.8], ["Sven", 0.85], ["Oaken", 0.9], ["Grandpabbie", 0.95], ["Duke of Weselton", 0.98], ["Marshmallow", 0.9999], ["Rapunzel", 1.0]]
+ADMIN_ROLE = "Best Girl"
 
 class DnDBot
   def initialize()
     @rand = Random.new
     @commands = {
+      :exit => ExitCommand.new,
       :frozen => FrozenCommand.new,
       :gif => GifCommand.new,
       :google => GoogleCommand.new,
+      :ping => PingCommand.new,
+      :playing => PlayingCommand.new,
       :roll => RollCommand.new,
       :youtube => YoutubeCommand.new
     }
@@ -32,6 +36,12 @@ class DnDBot
         event.respond("I don't have a command with that name.")
       end
     end
+  end
+
+  def check_privileges(command, user)
+    command_obj = @commands[command]
+    return !(command_obj.respond_to?(:restricted) && command_obj.restricted) ||
+      user.roles.map{ |r| r.name }.include?(ADMIN_ROLE)
   end
 
   attr_accessor :commands

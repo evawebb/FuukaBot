@@ -1,3 +1,5 @@
+FATE_DICE = { -1 => "-", 0 => "◦", 1 => "+" }
+
 class RollCommand
   def initialize
     @rand = Random.new
@@ -15,6 +17,14 @@ class RollCommand
       end
       sum = rolls.reduce(0, :+)
       event.respond("**#{sum}** = #{rolls.join(" + ")}")
+    elsif args.join(" ") =~ /(\d+)dF/
+      rolls = []
+      $~[1].to_i.times do
+        rolls << @rand.rand(3) - 1
+      end
+      sum = rolls.reduce(0, :+)
+      formatted_rolls = rolls.map{ |v| FATE_DICE[v] }
+      event.respond("**#{sum}** = #{formatted_rolls.join(", ")}")
     else
       event.respond("I don't understand that format.")
     end
