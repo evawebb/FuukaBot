@@ -1,6 +1,6 @@
 require "discordrb"
 require_relative "secrets.rb"
-require_relative "dndbot.rb"
+require_relative "fuuka_bot.rb"
 
 bot = Discordrb::Commands::CommandBot.new(
   prefix: "!",
@@ -10,7 +10,7 @@ bot = Discordrb::Commands::CommandBot.new(
 
 puts "Invite URL: #{bot.invite_url}"
 
-bot_instance = DnDBot.new
+bot_instance = FuukaBot.new
 bot_instance.commands.each do |command, obj|
   bot.command(command) do |event, *args|
     if bot_instance.access_allowed(command, event.message.author)

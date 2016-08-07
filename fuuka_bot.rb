@@ -5,6 +5,7 @@ require_relative "commands/exit.rb"
 require_relative "commands/frozen.rb"
 require_relative "commands/gif.rb"
 require_relative "commands/google.rb"
+# require_relative "commands/math.rb"
 require_relative "commands/ping.rb"
 require_relative "commands/playing.rb"
 require_relative "commands/restrict.rb"
@@ -14,7 +15,7 @@ require_relative "commands/youtube.rb"
 
 ADMIN_ROLE = "Best Girl"
 
-class DnDBot
+class FuukaBot
   def initialize()
     @rand = Random.new
     @commands = {
@@ -25,6 +26,7 @@ class DnDBot
       :frozen => FrozenCommand.new,
       :gif => GifCommand.new,
       :google => GoogleCommand.new,
+#      :math => MathCommand.new,
       :ping => PingCommand.new,
       :playing => PlayingCommand.new,
       :restrict => RestrictCommand.new(self),
