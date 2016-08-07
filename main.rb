@@ -1,5 +1,6 @@
 require "discordrb"
 require_relative "secrets.rb"
+require_relative "globals.rb"
 require_relative "fuuka_bot.rb"
 
 bot = Discordrb::Commands::CommandBot.new(

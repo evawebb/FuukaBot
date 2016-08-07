@@ -1,4 +1,3 @@
-require_relative "globals.rb"
 require_relative "commands/8ball.rb"
 require_relative "commands/bestgirl.rb"
 require_relative "commands/coin.rb"
@@ -11,6 +10,7 @@ require_relative "commands/p-lower.rb"
 require_relative "commands/p-raise.rb"
 require_relative "commands/ping.rb"
 require_relative "commands/playing.rb"
+require_relative "commands/poll.rb"
 require_relative "commands/roll.rb"
 require_relative "commands/youtube.rb"
 
@@ -30,6 +30,7 @@ class FuukaBot
       :"p-raise" => PRaiseCommand.new(self),
       :ping => PingCommand.new,
       :playing => PlayingCommand.new,
+      :poll => PollCommand.new,
       :roll => RollCommand.new,
       :youtube => YoutubeCommand.new
     }
@@ -37,17 +38,6 @@ class FuukaBot
 
   def access_allowed(command, user)
     @commands[command].plevel <= get_plevel(user)
-  end
-
-  def get_plevel(user)
-    role_names = user.roles.map { |r| r.name }
-    if role_names.include?(HIGH_ROLE)
-      2
-    elsif role_names.include?(LOW_ROLE)
-      0
-    else
-      1
-    end
   end
 
   def help(event, args)
