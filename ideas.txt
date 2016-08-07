@@ -4,5 +4,4 @@
 !21
 !math
 !rpn
-!8ball
 

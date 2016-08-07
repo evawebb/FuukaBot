@@ -1,3 +1,4 @@
+require_relative "commands/8ball.rb"
 require_relative "commands/coin.rb"
 require_relative "commands/exit.rb"
 require_relative "commands/frozen.rb"
@@ -16,6 +17,7 @@ class DnDBot
   def initialize()
     @rand = Random.new
     @commands = {
+      :"8ball" => EightballCommand.new,
       :coin => CoinCommand.new,
       :exit => ExitCommand.new,
       :frozen => FrozenCommand.new,
