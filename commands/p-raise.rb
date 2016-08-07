@@ -1,8 +1,8 @@
 require_relative "permission.rb"
 
-class RestrictCommand < PermissionCommand
+class PRaiseCommand < PermissionCommand
   def initialize(bot)
     super(bot)
-    @should_restrict = true
+    @modifier = 1
   end
 end
