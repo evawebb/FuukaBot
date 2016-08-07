@@ -11,10 +11,6 @@ bot = Discordrb::Commands::CommandBot.new(
 
 puts "Invite URL: #{bot.invite_url}"
 
-bot.message(with_text: "ping") do |event|
-  event.respond("PONG")
-end
-
 bot_instance = DnDBot.new
 bot_instance.commands.each do |command, obj|
   bot.command(command) do |event, *args|
@@ -37,5 +33,12 @@ bot.command(:exit) do |event|
   end
 end
 
+bot.message(with_text: "ping") do |event|
+  event.respond("PONG")
+end
+
+bot.mention do |event|
+  event.message.channel.send_file(File.new("imgs/me or my son.jpg", "r"))
+end
 
 bot.run
