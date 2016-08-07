@@ -16,7 +16,7 @@ bot_instance.commands.each do |command, obj|
     if bot_instance.access_allowed(command, event.message.author)
       obj.call(event, args)
     else
-      event.respond("You don't have privileges for that!")
+      access_denied(event)
     end
   end
 end

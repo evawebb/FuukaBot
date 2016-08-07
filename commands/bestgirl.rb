@@ -4,6 +4,7 @@ class BestGirlCommand < Command
   def initialize(bot)
     super()
     @bot = bot
+    @plevel = 0
   end
 
   def call(event, args)

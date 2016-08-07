@@ -6,21 +6,20 @@ class RollCommand < Command
   def initialize
     super
     @usage = "[x]d[y]"
-    @rand = Random.new
   end
 
   def call(event, args)
     if args.join(" ") =~ /(\d+)d(\d+)/
       rolls = []
       $~[1].to_i.times do 
-        rolls << @rand.rand($~[2].to_i) + 1
+        rolls << rand($~[2].to_i) + 1
       end
       sum = rolls.reduce(0, :+)
       event.respond("**#{sum}** = #{rolls.join(" + ")}")
     elsif args.join(" ") =~ /(\d+)dF/
       rolls = []
       $~[1].to_i.times do
-        rolls << @rand.rand(3) - 1
+        rolls << rand(3) - 1
       end
       sum = rolls.reduce(0, :+)
       formatted_rolls = rolls.map{ |v| FATE_DICE[v] }

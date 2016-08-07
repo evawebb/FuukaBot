@@ -3,7 +3,6 @@ require_relative "command.rb"
 class PlayingCommand < Command
   def initialize
     super
-    @plevel = 1
     @usage = "[game]"
   end
 

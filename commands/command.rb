@@ -1,6 +1,6 @@
 class Command
   def initialize
-    @plevel = 0
+    @plevel = 1
   end
 
   def help(event, command)

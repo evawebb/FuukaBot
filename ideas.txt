@@ -1,6 +1,5 @@
 !img [search term]
 !weather [zip code?]
 !21
-!math
 !rpn
 

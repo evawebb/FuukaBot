@@ -1,3 +1,4 @@
+require_relative "globals.rb"
 require_relative "commands/8ball.rb"
 require_relative "commands/bestgirl.rb"
 require_relative "commands/coin.rb"
@@ -12,8 +13,6 @@ require_relative "commands/ping.rb"
 require_relative "commands/playing.rb"
 require_relative "commands/roll.rb"
 require_relative "commands/youtube.rb"
-
-ADMIN_ROLE = "Best Girl"
 
 class FuukaBot
   def initialize()
@@ -37,15 +36,17 @@ class FuukaBot
   end
 
   def access_allowed(command, user)
-    user_plevel = get_plevel(user)
-    @commands[command].plevel <= user_plevel
+    @commands[command].plevel <= get_plevel(user)
   end
 
   def get_plevel(user)
-    if user.roles.map{ |r| r.name }.include?(ADMIN_ROLE)
+    role_names = user.roles.map { |r| r.name }
+    if role_names.include?(HIGH_ROLE)
       2
-    else
+    elsif role_names.include?(LOW_ROLE)
       0
+    else
+      1
     end
   end
 
