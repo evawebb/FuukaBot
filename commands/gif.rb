@@ -3,6 +3,7 @@ require_relative "search.rb"
 class GifCommand < SearchCommand
   def initialize
     super
+    @description = "Search Giphy and fetch the first result."
     @base_url = "http://giphy.com/search/"
     @result_regex = /<a data-id="(\w+)" class=".*?gif-link.*?"/
     @result_url = "http://i.giphy.com/"

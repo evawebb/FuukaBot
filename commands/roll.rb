@@ -6,6 +6,7 @@ class RollCommand < Command
   def initialize
     super
     @usage = "[x]d[y]"
+    @description = "Roll some dice."
   end
 
   def call(event, args)

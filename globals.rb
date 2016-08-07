@@ -1,5 +1,6 @@
 HIGH_ROLE = "Best Girl"
 LOW_ROLE = "Worst Girl"
+PREFIX = "!"
 
 srand
 

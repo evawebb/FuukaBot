@@ -4,6 +4,7 @@ class PlayingCommand < Command
   def initialize
     super
     @usage = "[game]"
+    @description = "Change what game FuukaBot is playing."
   end
 
   def call(event, args)

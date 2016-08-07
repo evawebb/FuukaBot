@@ -22,10 +22,6 @@ bot_instance.commands.each do |command, obj|
   end
 end
 
-bot.command(:help) do |event, *args|
-  bot_instance.help(event, args)
-end
-
 bot.mention do |event|
   event.message.channel.send_file(File.new("imgs/me or my son.jpg", "r"))
 end

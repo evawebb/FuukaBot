@@ -4,6 +4,7 @@ class ExitCommand < Command
   def initialize
     super
     @plevel = 2
+    @description = "Shut down FuukaBot."
   end
 
   def call(event, args)

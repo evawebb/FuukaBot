@@ -13,7 +13,7 @@ class PermissionCommand < Command
 
     if @bot.commands.has_key?(command)
       command_obj = @bot.commands[command]
-      event.respond("Command `!#{command}`'s permissions #{@bot.commands[command].modify_plevel(@modifier)}")
+      event.respond("Command `#{PREFIX}#{command}`'s permissions #{@bot.commands[command].modify_plevel(@modifier)}")
     else
       event.respond("I don't know that command.")
     end

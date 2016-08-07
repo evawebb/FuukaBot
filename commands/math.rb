@@ -10,6 +10,7 @@ class MathCommand < Command
   def initialize
     super
     @usage = "[expression]"
+    @description = "Perform a basic calculation. Currently only supports addition, subtraction, multiplication, and division. Also supports parentheses."
   end
 
   def call(event, args)

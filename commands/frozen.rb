@@ -7,11 +7,12 @@ FILM_LISTS = ["A–C", "D–F", "G–I", "J–L", "M–O", "P–S", "T–V", "W�
 FROZEN_CHARACTERS = [["Elsa", 0.2], ["Anna", 0.4], ["Kristoff", 0.6], ["Olaf", 0.7], ["Hans", 0.8], ["Sven", 0.85], ["Oaken", 0.9], ["Grandpabbie", 0.95], ["Duke of Weselton", 0.98], ["Marshmallow", 0.9999], ["Rapunzel", 1.0]]
 
 class FrozenCommand < Command
-  def help(event, command)
-    event.respond("Usages:")
-    event.respond("```\n!#{command}\n!#{command} ls\n!#{command} [image filename]```")
+  def initialize
+    super
+    @usage = ["", "ls", "[image filename]"]
+    @description = "Discover some of the film's lesser-known quotes, or fetch one of Zack's hand-picked reaction images."
   end
-  
+
   def call(event, args)
     if args.empty?
       event.respond(random_frozen_quote)

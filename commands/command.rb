@@ -4,11 +4,22 @@ class Command
   end
 
   def help(event, command)
+    str = ""
     if @usage.nil?
-      event.respond("Usage: `!#{command}`")
+      str += "**Usage:** `#{PREFIX}#{command}`\n"
+    elsif @usage.kind_of?(Array)
+      str += "**Usages:**\n```\n"
+      str += @usage.map{ |u| "#{PREFIX}#{command} #{u}" }.join("\n")
+      str += "```"
     else
-      event.respond("Usage: `!#{command} #{@usage}`")
+      str += "**Usage:** `#{PREFIX}#{command} #{@usage}`\n"
     end
+
+    if !@description.nil?
+      str += "*#{@description}*"
+    end
+
+    event.respond(str)
   end
 
   def modify_plevel(modifier)
@@ -19,7 +30,7 @@ class Command
       "cannot be raised further."
     else
       @plevel = m_plevel
-      "have changed to #{@plevel}."
+      "have changed to #{@plevel + 1}."
     end
   end
 

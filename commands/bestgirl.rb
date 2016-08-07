@@ -5,6 +5,7 @@ class BestGirlCommand < Command
     super()
     @bot = bot
     @plevel = 0
+    @description = "In case you forgot."
   end
 
   def call(event, args)

@@ -3,15 +3,13 @@ require_relative "command.rb"
 class PollCommand < Command
   def initialize
     super
+    @usage = ["open \"[question]\" \"[answer one]\" \"[answer two]\" ...", "vote [letter]", "close"]
+    @description = "Interact with a poll. Each user gets only one vote."
     @question = ""
     @creator = -1
     @options = []
     @votes = []
     @participants = []
-  end
-
-  def help(event, command)
-    event.respond("Coming soon")
   end
 
   def call(event, args)
@@ -40,11 +38,11 @@ class PollCommand < Command
 
       str =  "A new poll has been created by #{event.message.author.mention}!\n"
       str += "**Question:** #{@question}\n"
-      str += "**Options:**\n```"
+      str += "**Options:**\n```\n"
       @options.size.times do |i|
         str += "#{(i + 65).chr}: #{@options[i]}\n"
       end
-      str += "```Use `!poll vote [letter]` to cast your vote!"
+      str += "```\nUse `#{PREFIX}poll vote [letter]` to cast your vote!"
       event.respond(str)
     end
   end
@@ -86,7 +84,7 @@ class PollCommand < Command
 
       str =  "The poll has finished!\n"
       str += "**Question:** #{@question}\n"
-      str += "**Results:**\n```"
+      str += "**Results:**\n```\n"
       sorted_results.each do |result|
         str += "#{(result[0] + 65).chr}: #{result[1]} [#{result[2]} votes]\n"
       end

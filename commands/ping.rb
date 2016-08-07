@@ -4,6 +4,7 @@ class PingCommand < Command
   def initialize
     super
     @plevel = 0
+    @description = "Pong!"
   end
 
   def call(event, args)
