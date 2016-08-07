@@ -1,10 +1,8 @@
-class EightballCommand
+require_relative "command.rb"
+
+class EightballCommand < Command
   def initialize
     @rand = Random.new
-  end
-
-  def help(event)
-    event.respond("Usage: `!8ball`")
   end
 
   def call(event, args)

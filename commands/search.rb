@@ -1,7 +1,12 @@
 require "uri"
 require "open-uri"
+require_relative "command.rb"
 
-class SearchCommand
+class SearchCommand < Command
+  def initialize
+    @usage = "[search term]"
+  end
+
   def call(event, args)
     unsafe_term = args.join(" ")
     safe_term = URI.escape(unsafe_term, "@#$%&+=;:,/? ")

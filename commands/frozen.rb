@@ -1,18 +1,19 @@
 require "uri"
 require "open-uri"
+require_relative "command.rb"
 
 EXTS = ["gif", "png", "jpg", "jpeg"]
 FILM_LISTS = ["A–C", "D–F", "G–I", "J–L", "M–O", "P–S", "T–V", "W–Z"]
 FROZEN_CHARACTERS = [["Elsa", 0.2], ["Anna", 0.4], ["Kristoff", 0.6], ["Olaf", 0.7], ["Hans", 0.8], ["Sven", 0.85], ["Oaken", 0.9], ["Grandpabbie", 0.95], ["Duke of Weselton", 0.98], ["Marshmallow", 0.9999], ["Rapunzel", 1.0]]
 
-class FrozenCommand
+class FrozenCommand < Command
   def initialize
     @rand = Random.new
   end
   
-  def help(event)
+  def help(event, command)
     event.respond("Usages:")
-    event.respond("```\n!frozen\n!frozen ls\n!frozen [image filename]```")
+    event.respond("```\n!#{command}\n!#{command} ls\n!#{command} [image filename]```")
   end
   
   def call(event, args)

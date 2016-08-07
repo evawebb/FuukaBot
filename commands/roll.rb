@@ -1,12 +1,12 @@
+require_relative "command.rb"
+
 FATE_DICE = { -1 => "-", 0 => "◦", 1 => "+" }
 
-class RollCommand
+class RollCommand < Command
   def initialize
-    @rand = Random.new
-  end
+    @usage = "[x]d[y]"
 
-  def help(event)
-    event.respond("Usage: `!roll [x]d[y]`")
+    @rand = Random.new
   end
 
   def call(event, args)

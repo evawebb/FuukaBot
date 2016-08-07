@@ -1,10 +1,9 @@
-class PlayingCommand
+require_relative "command.rb"
+
+class PlayingCommand < Command
   def initialize
     @restricted = true
-  end
-
-  def help(event)
-    event.respond("Usage: `!playing [game]`")
+    @usage = "[game]"
   end
 
   def call(event, args)

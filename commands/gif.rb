@@ -2,14 +2,11 @@ require_relative "search.rb"
 
 class GifCommand < SearchCommand
   def initialize
+    super
     @base_url = "http://giphy.com/search/"
     @result_regex = /<a data-id="(\w+)" class=".*?gif-link.*?"/
     @result_url = "http://i.giphy.com/"
     @result_url_suffix = ".gif"
-  end
-
-  def help(event)
-    event.respond("Usage: `!gif [search term]`")
   end
 
   def call(event, args)

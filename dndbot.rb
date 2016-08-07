@@ -1,4 +1,5 @@
 require_relative "commands/8ball.rb"
+require_relative "commands/bestgirl.rb"
 require_relative "commands/coin.rb"
 require_relative "commands/exit.rb"
 require_relative "commands/frozen.rb"
@@ -18,6 +19,7 @@ class DnDBot
     @rand = Random.new
     @commands = {
       :"8ball" => EightballCommand.new,
+      :bestgirl => BestGirlCommand.new(self),
       :coin => CoinCommand.new,
       :exit => ExitCommand.new,
       :frozen => FrozenCommand.new,
@@ -32,20 +34,6 @@ class DnDBot
     }
   end
 
-  def help(event, args)
-    if args.empty?
-      event.respond("I know these commands:")
-      event.respond("```\n#{@commands.keys.join("\n")}\n```")
-    else
-      command = args[0].to_sym
-      if @commands.key?(command)
-        @commands[command].help(event)
-      else
-        event.respond("I don't have a command with that name.")
-      end
-    end
-  end
-
   def check_privileges(command, user)
     command_obj = @commands[command]
     !is_restricted(command_obj) || is_admin(user)
@@ -57,6 +45,20 @@ class DnDBot
 
   def is_admin(user)
     user.roles.map{ |r| r.name }.include?(ADMIN_ROLE)
+  end
+
+  def help(event, args)
+    if args.empty?
+      event.respond("I know these commands:")
+      event.respond("```\n#{@commands.keys.join("\n")}\n```")
+    else
+      command = args[0].to_sym
+      if @commands.key?(command)
+        @commands[command].help(event, command.to_s)
+      else
+        event.respond("I don't have a command with that name.")
+      end
+    end
   end
 
   attr_accessor :commands

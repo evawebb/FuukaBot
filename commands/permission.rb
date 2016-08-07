@@ -1,7 +1,10 @@
-class PermissionCommand
+require_relative "command.rb"
+
+class PermissionCommand < Command
   def initialize(bot)
     @bot = bot
     @restricted = true
+    @usage = "[command]"
   end
 
   def call(event, args)

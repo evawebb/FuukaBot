@@ -1,10 +1,8 @@
-class ExitCommand
+require_relative "command.rb"
+
+class ExitCommand < Command
   def initialize
     @restricted = true
-  end
-
-  def help(event)
-    event.respond("Usage: `!exit`")
   end
 
   def call(event, args)

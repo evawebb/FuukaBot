@@ -1,10 +1,8 @@
-class CoinCommand
+require_relative "command.rb"
+
+class CoinCommand < Command
   def initialize
     @rand = Random.new
-  end
-
-  def help(event)
-    event.respond("Usage: `!coin`")
   end
 
   def call(event, args)

@@ -5,8 +5,4 @@ class RestrictCommand < PermissionCommand
     super(bot)
     @should_restrict = true
   end
-
-  def help(event)
-    event.respond("Usage: `!restrict [command]`")
-  end
 end

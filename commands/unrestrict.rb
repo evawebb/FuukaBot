@@ -5,8 +5,4 @@ class UnrestrictCommand < PermissionCommand
     super(bot)
     @should_restrict = false
   end
-
-  def help(event)
-    event.respond("Usage: `!unrestrict [command]`")
-  end
 end

@@ -1,8 +1,6 @@
-class PingCommand
-  def help(event)
-    event.respond("Usage: `!ping`")
-  end
+require_relative "command.rb"
 
+class PingCommand < Command
   def call(event, args)
     event.respond("PONG")
   end
