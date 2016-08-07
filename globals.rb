@@ -1,6 +1,7 @@
 HIGH_ROLE = "Best Girl"
 LOW_ROLE = "Worst Girl"
-PREFIX = "!"
+PREFIX = ";"
+MESSAGE_LIMIT = 1000
 
 srand
 

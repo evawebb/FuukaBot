@@ -4,14 +4,14 @@ require_relative "globals.rb"
 require_relative "fuuka_bot.rb"
 
 bot = Discordrb::Commands::CommandBot.new(
-  prefix: "!",
+  prefix: PREFIX,
   token: TOKEN,
   application_id: ID
 )
 
 puts "Invite URL: #{bot.invite_url}"
 
-bot_instance = FuukaBot.new
+bot_instance = FuukaBot.new(bot)
 bot_instance.commands.each do |command, obj|
   bot.command(command) do |event, *args|
     if bot_instance.access_allowed(command, event.message.author)
