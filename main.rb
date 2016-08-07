@@ -6,13 +6,24 @@ require_relative "dndbot.rb"
 bot = Discordrb::Commands::CommandBot.new(
   prefix: "!",
   token: TOKEN,
-  application_id: ID)
+  application_id: ID
+)
 
 puts "Invite URL: #{bot.invite_url}"
 
-
 bot.message(with_text: "ping") do |event|
   event.respond("PONG")
+end
+
+bot_instance = DnDBot.new
+bot_instance.commands.each do |command, obj|
+  bot.command(command) do |event, *args|
+    obj.call(event, args)
+  end
+end
+
+bot.command(:help) do |event, *args|
+  bot_instance.help(event, args)
 end
 
 bot.command(:exit) do |event|
@@ -26,13 +37,5 @@ bot.command(:exit) do |event|
   end
 end
 
-bot_instance = DnDBot.new
-bot_instance.methods.each do |method_name|
-  if method_name.to_s =~ /^cmd_(.*)$/
-    bot.command($~[1].to_sym) do |event, *args|
-      bot_instance.send(method_name, event, args)
-    end
-  end
-end
 
 bot.run
