@@ -2,7 +2,8 @@ require_relative "command.rb"
 
 class ExitCommand < Command
   def initialize
-    @restricted = true
+    super
+    @plevel = 2
   end
 
   def call(event, args)
@@ -10,6 +11,4 @@ class ExitCommand < Command
     event.message.channel.send_file(File.new("imgs/see you space cowboy.png", "r"))
     event.bot.stop
   end
-
-  attr_accessor :restricted
 end

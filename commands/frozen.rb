@@ -8,6 +8,7 @@ FROZEN_CHARACTERS = [["Elsa", 0.2], ["Anna", 0.4], ["Kristoff", 0.6], ["Olaf", 0
 
 class FrozenCommand < Command
   def initialize
+    super
     @rand = Random.new
   end
   

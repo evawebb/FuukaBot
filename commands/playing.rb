@@ -2,7 +2,8 @@ require_relative "command.rb"
 
 class PlayingCommand < Command
   def initialize
-    @restricted = true
+    super
+    @plevel = 1
     @usage = "[game]"
   end
 
@@ -11,6 +12,4 @@ class PlayingCommand < Command
     event.bot.game = game
     nil
   end
-
-  attr_accessor :restricted
 end

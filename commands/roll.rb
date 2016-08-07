@@ -4,8 +4,8 @@ FATE_DICE = { -1 => "-", 0 => "◦", 1 => "+" }
 
 class RollCommand < Command
   def initialize
+    super
     @usage = "[x]d[y]"
-
     @rand = Random.new
   end
 

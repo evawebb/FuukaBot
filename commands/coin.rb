@@ -2,6 +2,7 @@ require_relative "command.rb"
 
 class CoinCommand < Command
   def initialize
+    super
     @rand = Random.new
   end
 

@@ -4,6 +4,7 @@ require_relative "command.rb"
 
 class SearchCommand < Command
   def initialize
+    super
     @usage = "[search term]"
   end
 

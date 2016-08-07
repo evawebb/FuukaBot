@@ -34,17 +34,17 @@ class DnDBot
     }
   end
 
-  def check_privileges(command, user)
-    command_obj = @commands[command]
-    !is_restricted(command_obj) || is_admin(user)
+  def access_allowed(command, user)
+    user_plevel = get_plevel(user)
+    @commands[command].plevel <= user_plevel
   end
 
-  def is_restricted(command_obj)
-    command_obj.respond_to?(:restricted) && command_obj.restricted
-  end
-
-  def is_admin(user)
-    user.roles.map{ |r| r.name }.include?(ADMIN_ROLE)
+  def get_plevel(user)
+    if user.roles.map{ |r| r.name }.include?(ADMIN_ROLE)
+      2
+    else
+      0
+    end
   end
 
   def help(event, args)

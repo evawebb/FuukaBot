@@ -13,7 +13,7 @@ puts "Invite URL: #{bot.invite_url}"
 bot_instance = DnDBot.new
 bot_instance.commands.each do |command, obj|
   bot.command(command) do |event, *args|
-    if bot_instance.check_privileges(command, event.message.author)
+    if bot_instance.access_allowed(command, event.message.author)
       obj.call(event, args)
     else
       event.respond("You don't have privileges for that!")
