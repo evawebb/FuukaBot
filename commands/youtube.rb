@@ -1,22 +1,13 @@
-require "uri"
-require "open-uri"
+require_relative "search.rb"
 
-class YoutubeCommand
-  def help(event)
-    event.respond("Usage: `!youtube [search term]`")
+class YoutubeCommand < SearchCommand
+  def initialize
+    @base_url = "https://youtube.com/results?search_query="
+    @result_regex = /<h3 class="yt-lockup-title "><a href="(.*?)"/
+    @result_url = "https://youtube.com"
   end
 
-  def call(event, args)
-    unsafe_term = args.join(" ")
-    safe_term = URI.escape(unsafe_term, "@#$%&+=;:,/? ")
-
-    response = open("https://youtube.com/results?search_query=#{safe_term}").read.gsub("\n", "")
-    if response =~ /<h3 class="yt-lockup-title "><a href="(.*?)"/
-      url = "https://youtube.com#{URI.unescape($~[1])}"
-
-      event.respond(url)
-    else
-      event.respond("No results found!")
-    end
+  def help(event)
+    event.respond("Usage: `!youtube [search term]`")
   end
 end
