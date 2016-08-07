@@ -2,10 +2,6 @@ require "uri"
 require "open-uri"
 
 class GoogleCommand
-  def initialize
-    @rand = Random.new
-  end
-
   def help(event)
     event.respond("Usage: `!google [search term]`")
   end

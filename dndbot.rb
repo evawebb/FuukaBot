@@ -1,7 +1,8 @@
-require_relative "commands/google.rb"
-require_relative "commands/gif.rb"
-require_relative "commands/roll.rb"
 require_relative "commands/frozen.rb"
+require_relative "commands/gif.rb"
+require_relative "commands/google.rb"
+require_relative "commands/roll.rb"
+require_relative "commands/youtube.rb"
 
 EXTS = ["gif", "png", "jpg", "jpeg"]
 FILM_LISTS = ["A–C", "D–F", "G–I", "J–L", "M–O", "P–S", "T–V", "W–Z"]
@@ -11,10 +12,11 @@ class DnDBot
   def initialize()
     @rand = Random.new
     @commands = {
-      :google => GoogleCommand.new,
+      :frozen => FrozenCommand.new,
       :gif => GifCommand.new,
+      :google => GoogleCommand.new,
       :roll => RollCommand.new,
-      :frozen => FrozenCommand.new
+      :youtube => YoutubeCommand.new
     }
   end
 
