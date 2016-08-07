@@ -3,6 +3,6 @@
 !weather [zip code?]
 !21
 !math
-!coin
+!rpn
 !8ball
 
