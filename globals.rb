@@ -1,7 +1,10 @@
+require "json"
+
 HIGH_ROLE = "Best Girl"
 LOW_ROLE = "Worst Girl"
 PREFIX = ";"
 MESSAGE_LIMIT = 1000
+FILE_21 = "21.json"
 
 srand
 
@@ -17,5 +20,20 @@ def get_plevel(user)
     0
   else
     1
+  end
+end
+
+def read_json(fn)
+  json = ""
+  File.open(fn, "r") do |f|
+    json = f.read
+  end
+  JSON.parse(json)
+end
+
+def write_json(fn, hash)
+  json = JSON.generate(hash)
+  File.open(fn, "w") do |f|
+    f << json
   end
 end

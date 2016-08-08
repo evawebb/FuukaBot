@@ -1,3 +1,5 @@
+require_relative "commands/21.rb"
+require_relative "commands/21reset.rb"
 require_relative "commands/8ball.rb"
 require_relative "commands/bestgirl.rb"
 require_relative "commands/coin.rb"
@@ -21,7 +23,9 @@ class FuukaBot
   def initialize(bot)
     @rand = Random.new
     @commands = {
-      :"8ball" => EightballCommand.new,
+      :"21" => TwentyOneCommand.new,
+      :"21reset" => TwentyOneResetCommand.new,
+      :"8ball" => EightBallCommand.new,
       :bestgirl => BestGirlCommand.new(self),
       :coin => CoinCommand.new,
       :exit => ExitCommand.new,

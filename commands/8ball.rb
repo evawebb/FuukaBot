@@ -1,6 +1,6 @@
 require_relative "command.rb"
 
-class EightballCommand < Command
+class EightBallCommand < Command
   def initialize
     super
     @description = "Discover your future!"
