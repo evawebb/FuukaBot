@@ -1,10 +1,23 @@
 require "uri"
 require_relative "command.rb"
 
+module Discordrb::Voice
+  class Encoder
+    def ffmpeg_command
+      puts "avconv"
+      "avconv"
+    end
+  end
+end
+
 class MusicCommand < Command
   def initialize(bot)
     super()
     @bot = bot
+    @usage = ["ls [path]", "connect [channel name]", "play [path]", "stop"]
+    @description = "Play some music on a voice channel. Only supports music pulled from Zack's library at the moment."
+    @playing = false
+    @queue = []
   end
 
   def call(event, args)
@@ -15,8 +28,12 @@ class MusicCommand < Command
         connect(event, args[1..-1])
       elsif args[0] == "play"
         play(event, args[1..-1])
+      elsif args[0] == "stop"
+        stop(event)
       elsif args[0] == "ls"
         ls(event, args[1..-1])
+      elsif args[0] == "vol"
+        vol(event, args[1..-1])
       end
     end
     nil
@@ -49,13 +66,38 @@ class MusicCommand < Command
       full_path = "#{BASE_MUSIC_PATH}/#{rel_path}"
       
       if File.file?(full_path) && full_path =~ /\.mp3$/
-        event.respond("Playing `#{rel_path}`")
-        event.voice.play_file(full_path)
+        if @playing
+          event.respond("Song added to queue.")
+          @queue << full_path
+        else
+          event.respond("Playing `#{rel_path}`")
+          @playing = true
+          event.voice.play_file(full_path)
+          on_song_end(event)
+        end
       else
         event.respond("Invalid path.")
       end
     end
     nil
+  end
+
+  def on_song_end(event)
+    puts "playing: #{@playing}, queue: #{@queue.inspect}"
+    if @playing
+      if !@queue.empty?
+        full_path = @queue.shift
+        event.respond("Playing the next song in the queue!")
+        event.voice.play_file(full_path)
+        on_song_end(event)
+      else
+        @playing = false
+      end
+    end
+  end
+
+  def stop(event)
+    event.voice.stop_playing
   end
 
   def ls(event, args)
@@ -76,6 +118,17 @@ class MusicCommand < Command
       strs.each { |s| event.respond(s) }
     else
       event.respond("Invalid path.")
+    end
+  end
+
+  def vol(event, args)
+    val = args.join("").strip
+    if val =~ /^\d+$/
+      val = val.to_f
+      if 0 < val && val < 100.0
+        event.voice.volume = val / 100.0
+        event.respond("Volume adjusted to #{val}%.")
+      end
     end
   end
 

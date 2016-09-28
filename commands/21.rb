@@ -4,6 +4,7 @@ require_relative "21.cards.rb"
 =begin
 TODO:
 - dealer blackjack
+- insurance
 - surrender
 - maybe split?
 =end
@@ -11,6 +12,8 @@ TODO:
 class TwentyOneCommand < Command
   def initialize
     super
+    @usage = ["standing", "opt-in", "opt-out", "bet [amount]", "deal", "hit", "stand", "double"]
+    @description = "Play some blackjack!"
     @deck = shuffle
     @players = []
     @standby_players = []
