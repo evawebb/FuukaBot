@@ -1,6 +1,7 @@
 require_relative "command.rb"
 
 ORDER_OF_OPS = [
+  ["^"],
   ["+", "-"],
   ["*", "/"]
 ]
@@ -54,6 +55,8 @@ class MathCommand < Command
       a + b
     elsif operation == "-"
       a - b
+    elsif operation == "^"
+      a ** b
     end
   end
 end
