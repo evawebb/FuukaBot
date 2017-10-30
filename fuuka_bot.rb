@@ -30,11 +30,11 @@ class FuukaBot
       :coin => CoinCommand.new,
       :exit => ExitCommand.new,
       :frozen => FrozenCommand.new,
-      :gif => GifCommand.new,
+      # :gif => GifCommand.new, # This seems to be broken.
       :google => GoogleCommand.new,
       :help => HelpCommand.new(self),
       :math => MathCommand.new,
-      :music => MusicCommand.new(bot),
+      # :music => MusicCommand.new(bot), # This never wasn't broken.
       :"p-list" => PListCommand.new(self),
       :"p-lower" => PLowerCommand.new(self),
       :"p-raise" => PRaiseCommand.new(self),

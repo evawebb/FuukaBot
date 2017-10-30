@@ -6,7 +6,7 @@ require_relative "fuuka_bot.rb"
 bot = Discordrb::Commands::CommandBot.new(
   prefix: PREFIX,
   token: TOKEN,
-  application_id: ID
+  client_id: ID
 )
 
 puts "Invite URL: #{bot.invite_url}"
