@@ -1,5 +1,5 @@
 - [ ] ;img [search term]
-- [ ] ;weather [zip code?]
+- [x] ;weather [zip code?]
 - [ ] ;21
 - [ ] ;rpn
 - [ ] hogwarts house points

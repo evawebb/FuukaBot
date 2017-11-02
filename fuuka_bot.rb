@@ -15,6 +15,7 @@ require_relative "commands/playing.rb"
 require_relative "commands/poll.rb"
 require_relative "commands/roll.rb"
 require_relative "commands/twit.rb"
+require_relative "commands/weather.rb"
 require_relative "commands/youtube.rb"
 
 class FuukaBot
@@ -37,6 +38,7 @@ class FuukaBot
       :poll => PollCommand.new,
       :roll => RollCommand.new,
       :twit => TwitCommand.new,
+      :weather => WeatherCommand.new,
       :youtube => YoutubeCommand.new
     }
   end
