@@ -5,6 +5,13 @@ require "json"
 class WeatherCommand < Command
   def initialize
     super
+    @usage = [
+      "[zip code]", 
+      "[zip code] [country code]",
+      "[city name]",
+      "[city name] [country code]",
+      "[latitude] [longitude]"
+    ]
     @description = "Query the current weather anywhere in the world."
     @emojis = {
       "01d" => ":sunny:",
