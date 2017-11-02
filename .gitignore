@@ -2,3 +2,5 @@ secrets.rb
 *.swp
 imgs/frozen/*
 21.json
+tempfile*
+hogwarts.json

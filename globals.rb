@@ -25,10 +25,14 @@ end
 
 def read_json(fn)
   json = ""
-  File.open(fn, "r") do |f|
-    json = f.read
+  if File.file?(fn)
+    File.open(fn, "r") do |f|
+      json = f.read
+    end
+    JSON.parse(json)
+  else
+    {}
   end
-  JSON.parse(json)
 end
 
 def write_json(fn, hash)
@@ -36,4 +40,8 @@ def write_json(fn, hash)
   File.open(fn, "w") do |f|
     f << json
   end
+end
+
+def titlecase(str)
+  "#{str[0].upcase}#{str[1..-1].downcase}"
 end

@@ -4,6 +4,7 @@ require_relative "commands/exit.rb"
 require_relative "commands/frozen.rb"
 require_relative "commands/google.rb"
 require_relative "commands/help.rb"
+require_relative "commands/housecup.rb"
 require_relative "commands/math.rb"
 require_relative "commands/mabufu.rb"
 require_relative "commands/music.rb"
@@ -28,6 +29,7 @@ class FuukaBot
       :frozen => FrozenCommand.new,
       :google => GoogleCommand.new,
       :help => HelpCommand.new(self),
+      :housecup => HouseCupCommand.new,
       :mabufu => MabufuCommand.new,
       :math => MathCommand.new,
       :"p-list" => PListCommand.new(self),

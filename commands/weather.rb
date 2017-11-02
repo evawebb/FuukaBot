@@ -40,7 +40,7 @@ class WeatherCommand < Command
 
       event.respond([
         "**Weather right now in #{city}, #{country}:**",
-        "#{@emojis[icon]} #{desc[0].upcase}#{desc[1..-1].downcase}, #{temp}°F"
+        "#{@emojis[icon]} #{titlecase(desc)}, #{temp}°F"
       ].join("\n"))
     else
       event.respond("no")

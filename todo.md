@@ -2,7 +2,7 @@
 - [x] ;weather [zip code?]
 - [ ] ;21
 - [ ] ;rpn
-- [ ] hogwarts house points
+- [x] hogwarts house points
 - [ ] make music player work
 - [ ] markov generator
 - [x] tweet fetcher

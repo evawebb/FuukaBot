@@ -2,6 +2,7 @@ require "discordrb"
 require_relative "secrets.rb"
 require_relative "globals.rb"
 require_relative "fuuka_bot.rb"
+require_relative "responses.rb"
 
 bot = Discordrb::Commands::CommandBot.new(
   prefix: PREFIX,
@@ -26,8 +27,10 @@ bot.mention do |event|
   event.message.channel.send_file(File.new("imgs/me or my son.jpg", "r"))
 end
 
-bot.message(contains: /best girl/i) do |event|
-  event.respond("its me")
+$responses.each do |r|
+  bot.message(contains: r["regex"]) do |event|
+    r["response"].call(event)
+  end
 end
 
 bot.run
