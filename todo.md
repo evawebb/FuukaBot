@@ -6,6 +6,5 @@
 - [ ] make music player work
 - [ ] markov generator
 - [x] tweet fetcher
-- [ ] fix gif search
 - [x] images with twitter messages
 - [ ] twitter photo albums
