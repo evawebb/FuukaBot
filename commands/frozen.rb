@@ -9,35 +9,11 @@ FROZEN_CHARACTERS = [["Elsa", 0.2], ["Anna", 0.4], ["Kristoff", 0.6], ["Olaf", 0
 class FrozenCommand < Command
   def initialize
     super
-    @usage = ["", "ls", "[image filename]"]
     @description = "Discover some of the film's lesser-known quotes, or fetch one of Zack's hand-picked reaction images."
   end
 
   def call(event, args)
-    if args.empty?
-      event.respond(random_frozen_quote)
-    elsif args[0] == "ls"
-      out_str = ""
-      Dir["imgs/frozen/*"].sort.each do |fn|
-        if fn =~ /imgs\/frozen\/(.*)\.\w+$/
-          out_str << "  `#{$~[1]}`\n"
-        end
-      end
-      event.respond("I have these Frozen images:")
-      event.respond(out_str)
-    else
-      fn = "imgs/frozen/#{args.join(" ")}."
-
-      EXTS.each do |ext|
-        img = try_image("#{fn}#{ext}")
-        if img
-          event.message.channel.send_file(img)
-          return
-        end
-      end
-
-      event.respond("Sorry, I don't have a file with that name.")
-    end
+    event.respond(random_frozen_quote)
   end
 
   def random_frozen_quote()

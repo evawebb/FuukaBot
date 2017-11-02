@@ -1,7 +1,9 @@
-* ;img [search term]
-* ;weather [zip code?]
-* ;21
-* ;rpn
-* hogwarts house points
-* improve music player with youtube/soundcloud download
-
+- [ ] ;img [search term]
+- [ ] ;weather [zip code?]
+- [ ] ;21
+- [ ] ;rpn
+- [ ] hogwarts house points
+- [ ] make music player work
+- [ ] markov generator
+- [ ] tweet fetcher
+- [ ] fix gif search
