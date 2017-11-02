@@ -26,4 +26,8 @@ bot.mention do |event|
   event.message.channel.send_file(File.new("imgs/me or my son.jpg", "r"))
 end
 
+bot.message(contains: /best girl/i) do |event|
+  event.respond("its me")
+end
+
 bot.run
