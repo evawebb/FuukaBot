@@ -6,6 +6,7 @@ class TwitCommand < Command
     super
     @usage = "[username]"
     @tweet_regex = /<p class="[^"]*tweet-text[^"]*"[^>]*>(.*?)<\/p>/m
+    @description = "Tweet tweet motherfucker"
   end
 
   def call(event, args)
@@ -23,6 +24,9 @@ class TwitCommand < Command
           .gsub("&quot;", "\"")
           .gsub("&amp;", "&")
           .gsub("&#39;", "'")
+          .gsub("&nbsp;", "")
+          .gsub("&gt;", ">")
+          .gsub("&lt;", "<")
           .gsub("pic.twitter", "http://pic.twitter")
         response = response[i..-1]
       else
@@ -31,7 +35,31 @@ class TwitCommand < Command
     end
 
     if choices.size > 0
-      event.respond(choices.sample)
+      r = choices.sample
+
+      if r =~ /(.*)(http:\/\/pic\.twitter\.com.*)/
+        msg = $~[1]
+        url = $~[2]
+
+        if msg.size > 0
+          event.respond(msg)
+        end
+
+        img_response = open(url).read
+        if img_response =~ /<div class="[^"]*photoContainer[^"]*"[^>]*data-image-url="(.*?)"/
+          ext = $~[1].split(".")[-1]
+          img_data = open($~[1])
+          img_data.binmode
+          File.open("tempfile.#{ext}", "w") do |f|
+            f << img_data.read
+          end
+          event.message.channel.send_file(File.new("tempfile.#{ext}", "r"))
+        else
+          event.respond("Error sending tweet picture.")
+        end
+      else
+        event.respond(r)
+      end
     else
       event.respond("I didn't find any tweets.")
     end
