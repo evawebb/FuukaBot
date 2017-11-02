@@ -14,6 +14,7 @@ require_relative "commands/ping.rb"
 require_relative "commands/playing.rb"
 require_relative "commands/poll.rb"
 require_relative "commands/roll.rb"
+require_relative "commands/twit.rb"
 require_relative "commands/youtube.rb"
 
 class FuukaBot
@@ -35,6 +36,7 @@ class FuukaBot
       :playing => PlayingCommand.new,
       :poll => PollCommand.new,
       :roll => RollCommand.new,
+      :twit => TwitCommand.new,
       :youtube => YoutubeCommand.new
     }
   end
