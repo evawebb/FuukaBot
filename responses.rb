@@ -55,5 +55,11 @@ $responses = [
 
       nil
     }
+  },
+  {
+    "regex" => /pancake/i,
+    "response" => Proc.new { |event|
+      event.respond(":smirk_cat:")
+    }
   }
 ]
