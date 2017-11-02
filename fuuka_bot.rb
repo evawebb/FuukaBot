@@ -6,12 +6,10 @@ require_relative "commands/google.rb"
 require_relative "commands/help.rb"
 require_relative "commands/housecup.rb"
 require_relative "commands/math.rb"
-require_relative "commands/mabufu.rb"
 require_relative "commands/music.rb"
 require_relative "commands/p-list.rb"
 require_relative "commands/p-lower.rb"
 require_relative "commands/p-raise.rb"
-require_relative "commands/ping.rb"
 require_relative "commands/playing.rb"
 require_relative "commands/poll.rb"
 require_relative "commands/roll.rb"
@@ -30,12 +28,10 @@ class FuukaBot
       :google => GoogleCommand.new,
       :help => HelpCommand.new(self),
       :housecup => HouseCupCommand.new,
-      :mabufu => MabufuCommand.new,
       :math => MathCommand.new,
       :"p-list" => PListCommand.new(self),
       :"p-lower" => PLowerCommand.new(self),
       :"p-raise" => PRaiseCommand.new(self),
-      :ping => PingCommand.new,
       :playing => PlayingCommand.new,
       :poll => PollCommand.new,
       :roll => RollCommand.new,

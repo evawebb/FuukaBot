@@ -14,6 +14,12 @@ end
 
 $responses = [
   {
+    "regex" => /mabufu/i,
+    "response" => Proc.new { |event|
+      event.respond("Bufula! :snowflake:")
+    }
+  },
+  {
     "regex" => /best girl/i,
     "response" => Proc.new { |event|
       event.respond("its me")
