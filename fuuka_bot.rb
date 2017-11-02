@@ -9,6 +9,7 @@ require_relative "commands/gif.rb"
 require_relative "commands/google.rb"
 require_relative "commands/help.rb"
 require_relative "commands/math.rb"
+require_relative "commands/mabufu.rb"
 require_relative "commands/music.rb"
 require_relative "commands/p-list.rb"
 require_relative "commands/p-lower.rb"
@@ -33,6 +34,7 @@ class FuukaBot
       # :gif => GifCommand.new, # This seems to be broken.
       :google => GoogleCommand.new,
       :help => HelpCommand.new(self),
+      :mabufu => MabufuCommand.new,
       :math => MathCommand.new,
       # :music => MusicCommand.new(bot), # This never wasn't broken.
       :"p-list" => PListCommand.new(self),
