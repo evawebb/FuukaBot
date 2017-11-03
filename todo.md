@@ -8,4 +8,4 @@
 - [x] tweet fetcher
 - [x] images with twitter messages
 - [ ] twitter photo albums
-- [ ] F+ recommender
+- [x] F+ recommender

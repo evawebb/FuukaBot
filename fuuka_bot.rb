@@ -1,6 +1,7 @@
 require_relative "commands/8ball.rb"
 require_relative "commands/coin.rb"
 require_relative "commands/exit.rb"
+require_relative "commands/fplus.rb"
 require_relative "commands/frozen.rb"
 require_relative "commands/google.rb"
 require_relative "commands/help.rb"
@@ -25,6 +26,7 @@ class FuukaBot
       :"8ball" => EightBallCommand.new,
       :coin => CoinCommand.new,
       :exit => ExitCommand.new,
+      :fplus => FPlusCommand.new,
       :frozen => FrozenCommand.new,
       :google => GoogleCommand.new,
       :help => HelpCommand.new(self),
