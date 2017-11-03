@@ -5,6 +5,7 @@ require_relative "commands/frozen.rb"
 require_relative "commands/google.rb"
 require_relative "commands/help.rb"
 require_relative "commands/housecup.rb"
+require_relative "commands/img.rb"
 require_relative "commands/math.rb"
 require_relative "commands/music.rb"
 require_relative "commands/p-list.rb"
@@ -28,6 +29,7 @@ class FuukaBot
       :google => GoogleCommand.new,
       :help => HelpCommand.new(self),
       :housecup => HouseCupCommand.new,
+      :img => ImgCommand.new,
       :math => MathCommand.new,
       :"p-list" => PListCommand.new(self),
       :"p-lower" => PLowerCommand.new(self),

@@ -1,4 +1,4 @@
-- [ ] ;img [search term]
+- [x] ;img [search term]
 - [x] ;weather [zip code?]
 - [ ] ;21
 - [ ] ;rpn
