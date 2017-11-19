@@ -1,7 +1,7 @@
 hogwarts_regex = /(\-?\d+) (points )?(to|for|from) (Gryffindor|Hufflepuff|Ravenclaw|Slytherin)/i
 def hogwarts_lead(data)
   lead_house = "hufflepuff"
-  lead_points = data[lead_house].nil?
+  lead_points = data[lead_house]
   lead_points ||= 0
   data.each do |k, v|
     if v > lead_points
