@@ -11,3 +11,5 @@
 - [x] F+ recommender
 - [ ] some kinda game?
 - [ ] chess
+- [ ] J interpreter?
+- [ ] periodically annoy people
