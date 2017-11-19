@@ -4,7 +4,7 @@ require "json"
 
 links = []
 episodes = {}
-tags = []
+raw_tags = []
 
 i = 1
 while true
@@ -30,13 +30,23 @@ links.each do |l|
     puts "Got tags for episode: #{$~[1]}"
     t = $~[1].split(",")
     episodes[l] = t
-    tags.concat(t)
+    raw_tags.concat(t)
   end
 end
 
-episodes["tags"] = tags.uniq
+better_tags = {}
+raw_tags.each do |t|
+  if better_tags.has_key?(t)
+    better_tags[t] += 1
+  else
+    better_tags[t] = 1
+  end
+end
 
-File.open("fplus.json", "w") do |f|
+puts better_tags.inspect
+episodes["tags"] = better_tags
+
+File.open("data/fplus.json", "w") do |f|
   f << JSON.generate(episodes)
 end
 

@@ -9,3 +9,5 @@
 - [x] images with twitter messages
 - [ ] twitter photo albums
 - [x] F+ recommender
+- [ ] some kinda game?
+- [ ] chess

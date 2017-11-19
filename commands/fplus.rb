@@ -7,7 +7,7 @@ class FPlusCommand < Command
       "tags"
     ]
     @description = "Let FuukaBot recommend you some terrible things, read with enthusiasm."
-    @eps = read_json("fplus.json")
+    @eps = read_json("data/fplus.json")
     @msg_threshold = 1024
   end
 

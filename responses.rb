@@ -36,7 +36,7 @@ $responses = [
       end
       house = $~[4].downcase
 
-      data = read_json("hogwarts.json")
+      data = read_json("data/hogwarts.json")
       lead_house = hogwarts_lead(data)
       n = data.keys.size
 
@@ -51,7 +51,7 @@ $responses = [
         event.respond("#{titlecase(new_lead_house)} is now in the lead, with **#{data[new_lead_house]} points**!")
       end
 
-      write_json("hogwarts.json", data)
+      write_json("data/hogwarts.json", data)
 
       nil
     }

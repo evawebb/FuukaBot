@@ -7,7 +7,7 @@ class HouseCupCommand < Command
   end
 
   def call(event, args)
-    data = read_json("hogwarts.json")
+    data = read_json("data/hogwarts.json")
 
     houses_left = ["gryffindor", "hufflepuff", "ravenclaw", "slytherin"]
     houses_list = []
