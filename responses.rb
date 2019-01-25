@@ -48,7 +48,7 @@ $responses = [
 
       new_lead_house = hogwarts_lead(data)
       if new_lead_house != lead_house || n == 0
-        event.respond("#{titlecase(new_lead_house)} is now in the lead, with **#{data[new_lead_house]} points**!")
+        event.respond("#{titlecase(new_lead_house)} is now in the lead, with **#{data[new_lead_house].to_i} points**!")
       end
 
       write_json("data/hogwarts.json", data)

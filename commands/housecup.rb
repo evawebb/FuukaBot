@@ -25,7 +25,7 @@ class HouseCupCommand < Command
       end
 
       houses_list << highest_house
-      points_list << highest_points
+      points_list << highest_points.to_i
       data.delete(highest_house)
       houses_left.delete(highest_house)
     end
