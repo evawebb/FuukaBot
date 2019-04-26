@@ -7,4 +7,4 @@ echo ">>>> $USER"
 echo ">>>> $(which ruby)"
 echo ">>>> $PATH"
 
-ruby main.rb
+ruby main.rb | tee /var/log/fuuka.bot
