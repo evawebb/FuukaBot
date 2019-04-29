@@ -31,7 +31,7 @@ class FuukaBot
       :google => GoogleCommand.new,
       :help => HelpCommand.new(self),
       :housecup => HouseCupCommand.new,
-      # :img => ImgCommand.new,
+      :img => ImgCommand.new,
       :math => MathCommand.new,
       :"p-list" => PListCommand.new(self),
       :"p-lower" => PLowerCommand.new(self),
